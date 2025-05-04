@@ -10,6 +10,9 @@ php maintenance/run.php install.php \
     --lang=en \
     --pass=mediawiki1234 \
     'Swikipedia' 'Swiki' &&
+echo "wfLoadExtension( 'WikiEditor' );" >> LocalSettings.php  &&
+echo "wfLoadExtension( 'CodeEditor' );" >> LocalSettings.php  &&
+echo "wfLoadExtension( 'VisualEditor' );" >> LocalSettings.php  &&
 echo "wfLoadExtension( 'Swiki' );" >> LocalSettings.php  &&
 echo "\$wgSwikiEnableSwaggerDocHook = true;" >> LocalSettings.php &&
 echo "\$wgRateLimits = [];" >> LocalSettings.php &&
@@ -23,4 +26,5 @@ php maintenance/run.php edit.php --conf LocalSettings.php Swiki_Invalid_Urls < e
 php maintenance/run.php edit.php --conf LocalSettings.php Swiki_Valid_Inline < extensions/Swiki/tests/data/Swiki_Valid_Inline.html &&
 php maintenance/run.php edit.php --conf LocalSettings.php Swiki_Valid_Url_Standalone < extensions/Swiki/tests/data/Swiki_Valid_Url_Standalone.html &&
 php maintenance/run.php edit.php --conf LocalSettings.php Swiki_Valid_Url < extensions/Swiki/tests/data/Swiki_Valid_Url.html &&
-php maintenance/run.php edit.php --conf LocalSettings.php Swiki_Valid_Urls < extensions/Swiki/tests/data/Swiki_Valid_Urls.html
+php maintenance/run.php edit.php --conf LocalSettings.php Swiki_Valid_Urls < extensions/Swiki/tests/data/Swiki_Valid_Urls.html &&
+php maintenance/run.php edit.php --conf LocalSettings.php VisualEditor_Edit < extensions/Swiki/tests/data/Swiki_Invalid_Inline.html
