@@ -1,6 +1,6 @@
 {
 	"name": "Swiki",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": "Vuhuy Luu",
 	"url": "https://github.com/vuhuy/Swiki",
 	"descriptionmsg": "swiki-desc",
@@ -51,6 +51,51 @@
 			"dependencies": [
 				"ext.swiki.swaggerui.js"
 			]
+		},
+		"ext.swiki.visualEditor.icons": {
+			"class": "MediaWiki\\ResourceLoader\\ImageModule",
+			"selectorWithoutVariant": ".oo-ui-icon-{name}",
+			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
+			"variants": {
+				"progressive": {
+					"color": "#36c"
+				},
+				"invert": {
+					"color": "#fff"
+				}
+			},
+			"images": {
+				"swiki": {
+					"file": "ve-swiki/swiki.svg",
+					"variants": [
+						"progressive"
+					]
+				}
+			}
+		},
+		"ext.swiki.visualEditor": {
+			"scripts": [
+				"ve-swiki/ve.dm.MWSwikiNode.js",
+				"ve-swiki/ve.ce.MWSwikiNode.js",
+				"ve-swiki/ve.ui.MWSwikiContextItem.js",
+				"ve-swiki/ve.ui.MWSwikiDialog.js",
+				"ve-swiki/ve.ui.MWSwikiDialogTool.js"
+			],
+			"styles": [
+				"ve-swiki/ve.ui.MWSwikiContextItem.css"
+			],
+			"dependencies": [
+				"ext.visualEditor.mwcore",
+				"ext.swiki.visualEditor.icons",
+				"ext.swiki.init"
+			],
+			"messages": [
+				"swiki-ve-mwswikidialog-title",
+				"swiki-ve-mwswikidialog-spec",
+				"swiki-ve-mwswikidialog-url",
+				"swiki-ve-mwswikidialog-urls",
+				"swiki-ve-mwswikidialog-standalone"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -73,6 +118,13 @@
 	},
 	"ConfigRegistry": {
 		"swiki": "GlobalVarConfig::newInstance"
+	},
+	"attributes": {
+		"VisualEditor": {
+			"PluginModules": [
+				"ext.swiki.visualEditor"
+			]
+		}
 	},
 	"manifest_version": 2
 }
