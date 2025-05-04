@@ -5,5 +5,10 @@
 	"swiki-desc": "Swiki扩展提供了一个标签，用于渲染指定的OpenAPI或Swagger规范的Swagger UI",
 	"swiki-missing-spec": "未指定OpenAPI/Swagger规范",
 	"swiki-invalid-spec": "无效的JSON格式",
-	"swiki-invalid-urls": "多个链接格式无效"
+	"swiki-invalid-urls": "多个链接格式无效",
+	"swiki-ve-mwswikidialog-title": "Swagger UI",
+	"swiki-ve-mwswikidialog-spec": "OpenAPI/Swagger 规范（JSON 格式）",
+	"swiki-ve-mwswikidialog-url": "链接",
+	"swiki-ve-mwswikidialog-urls": "多个链接",
+	"swiki-ve-mwswikidialog-standalone": "使用独立预设进行渲染"
 }

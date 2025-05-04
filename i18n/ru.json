@@ -5,5 +5,10 @@
 	"swiki-desc": "Расширение Swiki предоставляет тег для отображения Swagger UI для указанной спецификации OpenAPI или Swagger",
 	"swiki-missing-spec": "Спецификация OpenAPI/Swagger не указана",
 	"swiki-invalid-spec": "Неверный формат JSON",
-	"swiki-invalid-urls": "Неверный формат для нескольких ссылок"
+	"swiki-invalid-urls": "Неверный формат для нескольких ссылок",
+	"swiki-ve-mwswikidialog-title": "Swagger UI",
+	"swiki-ve-mwswikidialog-spec": "Спецификация OpenAPI/Swagger (в формате JSON)",
+	"swiki-ve-mwswikidialog-url": "Ссылка",
+	"swiki-ve-mwswikidialog-urls": "Ссылки",
+	"swiki-ve-mwswikidialog-standalone": "Рендер с автономной предустановкой"
 }
