@@ -3,9 +3,9 @@ namespace MediaWiki\Extension\Swiki;
 
 use MediaWiki\Html\Html;
 use MediaWiki\Hook\ParserFirstCallInitHook;
-use MediaWiki\Parser\Parser;
-use MediaWiki\Parser\PPFrame;
 use MediaWiki\MediaWikiServices;
+use Parser;
+use PPFrame;
 
 /**
  * This class handles rendering SwaggerUI in WikiText.

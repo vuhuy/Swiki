@@ -1,16 +1,10 @@
-# Swiki
+# Swiki for MediaWiki 1.42
 
 **Swiki** is a [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) [extension](https://www.mediawiki.org/wiki/Extension:Swiki) that allows you to seamlessly embed [Swagger UI](https://github.com/swagger-api/swagger-ui) directly into your wiki pages using a simple `<swiki>` tag. It includes a recent build of Swagger UI, providing full support for displaying your API documentation.
 
 You can load OpenAPI or Swagger specifications in several ways: by embedding inline JSON, uploading a specification, referencing dedicated wiki pages that contain the specification, or linking to an external specification URL.
 
 Swiki also includes [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark), which is nicely integrated with MediaWiki skins that support dark mode, such as Vector-2022 and Minerva. Additionally, it can parse tags from third-party extensions like [SwaggerDoc](https://github.com/Griboedow/SwaggerDoc).
-
-> 🚀 **This repository follows the MediaWiki release branches compatibility policy.** You can find dedicated branches for supported versions here:
->
-> - [Swiki for MediaWiki 1.43](https://github.com/vuhuy/Swiki/tree/REL1_43) (current LTS version)
-> - [Swiki for MediaWiki 1.42](https://github.com/vuhuy/Swiki/tree/REL1_42) (legacy stable version)
-> - [Swiki for MediaWiki 1.39](https://github.com/vuhuy/Swiki/tree/REL1_39) (legacy LTS version)
 
 ## Screenshots
 
@@ -28,7 +22,7 @@ Clone the extension into your MediaWiki `extensions` directory:
 
 ```bash
 cd extensions/
-git clone https://github.com/vuhuy/Swiki
+git clone --branch REL1_42 https://github.com/vuhuy/Swiki
 ```
 
 Then enable it by adding the following line to your `LocalSettings.php`:
@@ -214,7 +208,7 @@ cd test/scripts
 Optionally, you can specify a supported MediaWiki version, e.g.:
 
 ```bash
-./run.sh 1.43
+./run.sh 1.42
 ```
 
 ## Credits
