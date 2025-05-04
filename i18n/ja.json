@@ -5,5 +5,10 @@
 	"swiki-desc": "Swiki拡張機能は、指定されたOpenAPIまたはSwagger仕様のSwagger UIをレンダリングするタグを提供します",
 	"swiki-missing-spec": "OpenAPI/Swagger仕様が指定されていません",
 	"swiki-invalid-spec": "無効なJSONフォーマット",
-	"swiki-invalid-urls": "複数リンクのフォーマットが無効です"
+	"swiki-invalid-urls": "複数リンクのフォーマットが無効です",
+	"swiki-ve-mwswikidialog-title": "Swagger UI",
+	"swiki-ve-mwswikidialog-spec": "OpenAPI/Swagger仕様書（JSON形式）",
+	"swiki-ve-mwswikidialog-url": "リンク",
+	"swiki-ve-mwswikidialog-urls": "リンク一覧",
+	"swiki-ve-mwswikidialog-standalone": "スタンドアロンプリセットでレンダリング"
 }

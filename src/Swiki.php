@@ -36,7 +36,7 @@ class Swiki implements ParserFirstCallInitHook {
 	 */
 	public function renderSwikiTag( $in, array $param, Parser $parser, PPFrame $frame ) {
 		$parser->getOutput()->addModules( [ 'ext.swiki.init' ] );
-		return $this->renderTag( $in, $param, false );
+		return $this->renderTag( $in, $param, false, true );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Swiki implements ParserFirstCallInitHook {
 			}
 		}
 
-		return $this->renderTag( $in, $param, true );
+		return $this->renderTag( $in, $param, true, false );
 	}
 
 	/**
@@ -84,9 +84,10 @@ class Swiki implements ParserFirstCallInitHook {
 	 * @param string|null $in
 	 * @param string[] $param
 	 * @param bool $forceStandalone
+	 * @param bool $usePlaceholder
 	 * @return string
 	 */
-	private function renderTag( $in, array $param, bool $forceStandalone ) {
+	private function renderTag( $in, array $param, bool $forceStandalone, bool $usePlaceholder) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$forceColorScheme = $config->get( 'SwikiForceColorScheme' );
 		$validatorUrl = $config->get( 'SwikiValidatorUrl' );
@@ -120,25 +121,34 @@ class Swiki implements ParserFirstCallInitHook {
 			$json = json_decode( $in, true );
 			if ( $json === null || $json === true || $json === false || json_last_error() !== JSON_ERROR_NONE || empty( $json ) ) {
 				$hasError = true;
-				$error = wfMessage( 'swiki-invalid-spec' )->text();
+				$content = wfMessage( 'swiki-invalid-spec' )->text();
+			} else {
+				$content = substr( json_encode( $json, JSON_UNESCAPED_SLASHES ), 0, 255 );
 			}
 		} elseif ( isset( $param['urls'] ) && trim( $param['urls'] ) !== '' ) {
 			$parts = array_map( 'trim', explode( '|', $param['urls'] ) );
 			if ( count( $parts ) % 2 !== 0 || count( $parts ) === 0 ) {
 				$hasError = true;
-				$error = wfMessage( 'swiki-invalid-urls' )->text();
+				$content = wfMessage( 'swiki-invalid-urls' )->text();
+			} else {
+				$content = substr( implode( '|', $parts ), 0, 255 );
 			}
-		} elseif ( !isset( $param['url'] ) || trim( $param['url'] ) === '' ) {
+		} elseif ( isset( $param['url'] ) && trim( $param['url'] ) !== '' ) {
+			$content = substr( trim( $param['url'] ), 0, 255 );
+		} else {
 			$hasError = true;
-			$error = wfMessage( 'swiki-missing-spec' )->text();
+			$content = wfMessage( 'swiki-missing-spec' )->text();
 		}
 
 		$attributes['class'] = $hasError
 			? 'mw-ext-swiki-container mw-ext-swiki-error'
 			: 'mw-ext-swiki-container mw-ext-swiki-render';
 
-		if ( $hasError ) {
-			return Html::rawElement( 'div', $attributes, $error );
+		if ( $usePlaceholder ) {
+			$placeholder = Html::element( 'div', [ 'class' => 'mw-ext-swiki-placeholder' ], $content );
+			return Html::rawElement( 'div', $attributes, $placeholder );
+		} else if ( $hasError ) {
+			return Html::rawElement( 'div', $attributes, $content );
 		}
 
 		return Html::rawElement( 'div', $attributes );

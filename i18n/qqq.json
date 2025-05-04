@@ -5,5 +5,10 @@
 	"swiki-desc": "The description of Swiki used in Extension credits.",
 	"swiki-missing-spec": "Message shown when no OpenAPI/Swagger specification was specified.",
 	"swiki-invalid-spec": "Message shown when the input OpenAPI/Swagger specification has invalid JSON formatting",
-	"swiki-invalid-urls": "Message shown when the input string for multiple links is incorrectly formatted."
+	"swiki-invalid-urls": "Message shown when the input string for multiple links is incorrectly formatted.",
+	"swiki-ve-mwswikidialog-title": "The title of the Swiki Visual Editor dialog/tool.",
+	"swiki-ve-mwswikidialog-spec": "Label for the JSON OpenAPI/Swagger specification input textbox.",
+	"swiki-ve-mwswikidialog-url": "Label for the single link textbox.",
+	"swiki-ve-mwswikidialog-urls": "Label for the multiple links textbox.",
+	"swiki-ve-mwswikidialog-standalone": "Label for the standalone preset checkbox."
 }
