@@ -1,6 +1,6 @@
 {
 	"name": "Swiki",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"author": "Vuhuy Luu",
 	"url": "https://github.com/vuhuy/Swiki",
 	"descriptionmsg": "swiki-desc",
@@ -65,6 +65,10 @@
 		"SwikiValidatorUrl": {
 			"value": null,
 			"description": "Validate the provided specification against a validator, e.g. https:///validator.swagger.io/validator. Default value: null."
+		},
+		"SwikiEnableSwaggerDocHook": {
+			"value": false,
+			"description": "Enables parsing of the SwaggerDoc tags. Default value: false."
 		}
 	},
 	"ConfigRegistry": {

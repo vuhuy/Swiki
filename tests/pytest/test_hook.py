@@ -13,6 +13,9 @@ def test_hook_control(browser, base_url):
     assert_js_errors(browser)
 
 @pytest.mark.parametrize("page,should_be_valid,should_be_standalone", [
+    ("SwaggerDoc_Invalid_Urls", False, False),
+    ("SwaggerDoc_Valid_Url", True, True),
+    ("SwaggerDoc_Valid_Urls", True, True),
     ("Swiki_Invalid_Inline", False, False),
     ("Swiki_Invalid_Urls", False, False),
     ("Swiki_Valid_Inline", True, False),
