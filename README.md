@@ -1,6 +1,6 @@
 # Swiki
 
-**Swiki** is a [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) [extension](https://www.mediawiki.org/wiki/Extension:Swiki) that allows you to seamlessly embed [Swagger UI](https://github.com/swagger-api/swagger-ui) directly into your wiki pages using a simple `<swiki>` tag. It includes a recent build of Swagger UI, providing full support for displaying your API documentation.
+**Swiki** is a [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) [extension](https://www.mediawiki.org/wiki/Extension:Swiki) that allows you to seamlessly embed [Swagger UI](https://github.com/swagger-api/swagger-ui) directly into your wiki pages using a simple `<swiki>` tag or through the [VisualEditor](https://www.mediawiki.org/wiki/VisualEditor). It includes a recent build of Swagger UI, providing full support for displaying your API documentation.
 
 You can load OpenAPI or Swagger specifications in several ways: by embedding inline JSON, uploading a specification, referencing dedicated wiki pages that contain the specification, or linking to an external specification URL.
 
@@ -21,6 +21,14 @@ Swagger UI in light mode. Left: default preset. Right: standalone preset.
 Swagger UI in dark mode. Left: default preset. Right: standalone preset.
 
 [![Swagger UI dark mode with default preset](assets/swiki-swagger-ui-default-night-thumb.png)](assets/swiki-swagger-ui-default-night.png) [![Swagger UI dark mode with standalone preset](assets/swiki-swagger-ui-standalone-night-thumb.png)](assets/swiki-swagger-ui-standalone-night.png)
+
+VisualEditor integration in light mode. Left: Swiki in VisualEditor. Right: Swiki dialog/tool.
+
+[![VisualEditor light mode editing mode](assets/swiki-visualeditor-edit-day-thumb.png)](assets/swiki-visualeditor-edit-day.png) [![VisualEditor light mode dialog/tool](assets/swiki-visualeditor-dialog-day-thumb.png)](assets/swiki-visualeditor-dialog-day.png)
+
+VisualEditor integration in dark mode. Left: Swiki in VisualEditor. Right: Swiki dialog/tool.
+
+[![VisualEditor dark mode editing mode](assets/swiki-visualeditor-edit-night-thumb.png)](assets/swiki-visualeditor-edit-night.png) [![VisualEditor dark mode dialog/tool](assets/swiki-visualeditor-dialog-night-thumb.png)](assets/swiki-visualeditor-dialog-night.png)
 
 ## Installation
 
@@ -58,6 +66,17 @@ In order to use Swagger UI, provide your specification in JSON format or referen
 - A relative **direct link** to a JSON file upload, e.g. `/images/a/bc/swagger-petstore3.json`. File uploads must be enabled and configured. Uploads can be done via `Special:Upload`.
 - A relative **raw link** to a wiki page that contains only the JSON specification, e.g., `/wiki/Swagger_Petstore_3.json?action=raw`. A raw link consists of the relative path to the page with the `?action=raw` query appended. Optionally, you can set the page’s content model to JSON via the `Special:ChangeContentModel` page (requires the `editcontentmodel` permission).
 - An absolute **external link** to a specification, e.g. `https://petstore3.swagger.io/api/v3/openapi.json`. Must start with `https://` or `http://`.
+
+### Visual editing
+
+Insert a Swagger UI tag using the `Insert` menu in VisualEditor. Existing tags can be edited through their context menu. The Swagger UI dialog offers the following options:
+
+- **OpenAPI/Swagger specification (JSON format):** Inline a JSON specification directly into the page. YAML is not supported. This will override the `Link` and `Links` fields when used.
+- **Link:** Load a specification from a relative or absolute URL.
+- **Links:** Load multiple specifications from URLs. Each entry must follow the format `url-to-spec|unique page name`, separated by yet another `|` character. If the URL contains a pipe, encode it as `%7C`. This option overrides the `Link` field and always uses the standalone preset.
+- **Render with standalone preset:** Renders Swagger UI with a top bar (intended for standalone pages) that includes the URL or specification selector when multiple specifications are used.
+
+### Source editing
 
 Use the `<swiki>` tag to render Swagger UI. Specifications and options can be provided in several ways:
 
