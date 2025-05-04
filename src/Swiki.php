@@ -20,6 +20,10 @@ class Swiki implements ParserFirstCallInitHook {
 	 */
 	public function onParserFirstCallInit( $parser ) {
 		$parser->setHook( 'swiki', [ $this, 'renderSwikiTag' ] );
+
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		if ( $config->get( 'SwikiEnableSwaggerDocHook' ) )
+			$parser->setHook( 'SwaggerDoc', [ $this, 'renderSwaggerDocTag' ] );
 	}
 
 	/**
@@ -32,6 +36,57 @@ class Swiki implements ParserFirstCallInitHook {
 	 */
 	public function renderSwikiTag( $in, array $param, Parser $parser, PPFrame $frame ) {
 		$parser->getOutput()->addModules( [ 'ext.swiki.init' ] );
+		return $this->renderTag( $in, $param, false );
+	}
+
+	/**
+	 * Render SwaggerUI with the provided Swagger or OpenAPI specification from a SwaggerDoc tag.
+	 * @param string|null $in
+	 * @param string[] $param
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 * @return string
+	 */
+	public function renderSwaggerDocTag( $in, array $param, Parser $parser, PPFrame $frame ) {
+		$parser->getOutput()->addModules( [ 'ext.swiki.init' ] );
+
+		// Follow SwaggerDoc parsing algorithm.
+		// See https://github.com/Griboedow/SwaggerDoc/blob/8ed8f8ea68d397e053b9aebc924133722ee844ed/SwaggerDoc.hooks.php.
+		if ( isset( $param['specurl'] ) || isset( $param['specUrl'] ) )
+			$param['url'] = isset( $param['specurl'] ) ? $param['specurl'] : $param['specUrl'];
+
+		if ( isset( $param['specurls'] ) || isset( $param['specUrls'] ) ) {
+			$urls = isset( $param['specurls'] ) ? $param['specurls'] : $param['specUrls'];
+			$urls = str_replace( '\'', '"', $urls);
+			$json = json_decode( $urls, true );
+
+			if ( $json !== null && $json !== true && $json !== false && json_last_error() === JSON_ERROR_NONE ) {
+				$parts = [];
+				foreach ($json as $item) {
+					if ( !isset ( $item['url'] ) || !isset( $item['name'] ) )
+						continue;
+
+					$parts[] = $item['url'];
+					$parts[] = $item['name'];
+				}
+
+				if ( count($parts) > 1)
+					$param['urls'] = implode( '|', $parts );
+			}
+		}
+
+		return $this->renderTag( $in, $param, true );
+	}
+
+	/**
+	 * Build the tag that renders Swagger UI.
+	 * Todo: 
+	 * @param string|null $in
+	 * @param string[] $param
+	 * @param bool $forceStandalone
+	 * @return string
+	 */
+	private function renderTag( $in, array $param, bool $forceStandalone ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$forceColorScheme = $config->get( 'SwikiForceColorScheme' );
 		$validatorUrl = $config->get( 'SwikiValidatorUrl' );
@@ -44,7 +99,7 @@ class Swiki implements ParserFirstCallInitHook {
 		if ( $validatorUrl )
 			$attributes['data-validator-url'] = $validatorUrl;
 
-		if ( isset( $param['standalone'] ) )
+		if ( isset( $param['standalone'] ) || $forceStandalone )
 			$attributes['data-standalone'] = '1';
 
 		if ( $in )
