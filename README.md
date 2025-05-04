@@ -1,8 +1,10 @@
 # Swiki
 
-**Swiki** is a [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) [extension](https://www.mediawiki.org/wiki/Extension:Swiki) that allows you to seamlessly embed [Swagger UI](https://github.com/swagger-api/swagger-ui) directly into your wiki pages using a simple `<swiki>` tag. It includes a recent build of Swagger UI, providing full support for displaying your API documentation. Swiki also includes [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark), which is nicely integrated with MediaWiki skins that support dark mode, such as Vector-2022 and Minerva.
+**Swiki** is a [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) [extension](https://www.mediawiki.org/wiki/Extension:Swiki) that allows you to seamlessly embed [Swagger UI](https://github.com/swagger-api/swagger-ui) directly into your wiki pages using a simple `<swiki>` tag. It includes a recent build of Swagger UI, providing full support for displaying your API documentation.
 
 You can load OpenAPI or Swagger specifications in several ways: by embedding inline JSON, uploading a specification, referencing dedicated wiki pages that contain the specification, or linking to an external specification URL.
+
+Swiki also includes [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark), which is nicely integrated with MediaWiki skins that support dark mode, such as Vector-2022 and Minerva. Additionally, it can parse tags from third-party extensions like [SwaggerDoc](https://github.com/Griboedow/SwaggerDoc).
 
 > 🚀 **This repository follows the MediaWiki release branches compatibility policy.** You can find dedicated branches for supported versions here:
 >
@@ -40,6 +42,8 @@ Optional configuration variables:
 - `$wgSwikiForceColorScheme`: Forces a specific color scheme in Swagger UI. Accepted values are `auto`, `light`, or `dark`. Default: `auto`.
 
 - `$wgSwikiValidatorUrl`: Specifies a Swagger validator for displaying a [validator badge](https://github.com/swagger-api/validator-badge), e.g., `https://validator.swagger.io/validator`. Default: `null`.
+
+- `$wgSwikiEnableSwaggerDocHook`: Enables parsing of SwaggerDoc tags when set to `true`. Default: `false`.
 
 To allow users to upload OpenAPI/Swagger specifications, ensure that file uploads are [properly configured](https://www.mediawiki.org/wiki/Manual:Configuring_file_uploads) and that `.json` is an allowed file extension:
 
