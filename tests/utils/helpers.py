@@ -1,4 +1,8 @@
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 import time
 
 
@@ -21,3 +25,18 @@ def save_screenshot(browser, name):
         browser.save_screenshot(f'tests/screenshots/Firefox-{name}.png')
     else:
         browser.save_screenshot(f'tests/screenshots/Browser-{name}.png')
+
+def wait_for_visualeditor(browser):
+    """Wait for VE loaded and close any welcome dialog or notification."""
+
+    WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".oo-ui-toolbar")))
+
+    try:
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".oo-ui-dialog-content .oo-ui-flaggedElement-primary .oo-ui-buttonElement-button"))).click()
+    except TimeoutException:
+        pass
+
+    try:
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".oo-ui-iconElement-icon.oo-ui-icon-close"))).click()
+    except TimeoutException:
+        pass
