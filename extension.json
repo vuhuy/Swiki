@@ -1,0 +1,74 @@
+{
+	"name": "Swiki",
+	"version": "0.1.0",
+	"author": "Vuhuy Luu",
+	"url": "https://github.com/vuhuy/Swiki",
+	"descriptionmsg": "swiki-desc",
+	"license-name": "MIT",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"MessagesDirs": {
+		"Swiki": [
+			"i18n"
+		]
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\Swiki\\Swiki"
+		}
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "main"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\Swiki\\": "src/"
+	 },
+	"ResourceModules": {
+		"ext.swiki.swaggerui.styles": {
+			"styles": [
+				"swagger-ui/swagger-ui.css",
+				"swagger-ui/swagger-ui-dark.css",
+				"swagger-ui/swagger-ui-custom.css"
+			]
+		},
+		"ext.swiki.swaggerui.js": {
+			"packageFiles": [
+				"swagger-ui/swagger-ui-bundle.js"
+			],
+			"dependencies": [
+				"ext.swiki.swaggerui.styles"
+			]
+		},
+		"ext.swiki.init": {
+			"scripts": [
+				"swiki.js"
+			],
+			"styles": [
+				"swiki.css"
+			],
+			"dependencies": [
+				"ext.swiki.swaggerui.js"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "Swiki/modules"
+	},
+	"config": {
+		"SwikiForceColorScheme": {
+			"value": "auto",
+			"description": "Force a color scheme for Swagger UI. Can be one of auto, light, or dark. Default value: auto."
+		},
+		"SwikiValidatorUrl": {
+			"value": null,
+			"description": "Validate the provided specification against a validator, e.g. https:///validator.swagger.io/validator. Default value: null."
+		}
+	},
+	"ConfigRegistry": {
+		"swiki": "GlobalVarConfig::newInstance"
+	},
+	"manifest_version": 2
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"swiki-desc": "Расширение Swiki предоставляет тег для отображения Swagger UI для указанной спецификации OpenAPI или Swagger",
+	"swiki-missing-spec": "Спецификация OpenAPI/Swagger не указана",
+	"swiki-invalid-spec": "Неверный формат JSON",
+	"swiki-invalid-urls": "Неверный формат для нескольких ссылок"
+}

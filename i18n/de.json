@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"swiki-desc": "Die Swiki-Erweiterung bietet ein Tag zum Rendern von Swagger UI für eine angegebene OpenAPI- oder Swagger-Spezifikation",
+	"swiki-missing-spec": "Keine OpenAPI/Swagger-Spezifikation angegeben",
+	"swiki-invalid-spec": "Ungültiges JSON-Format",
+	"swiki-invalid-urls": "Ungültige Formatierung für mehrere Links"
+}

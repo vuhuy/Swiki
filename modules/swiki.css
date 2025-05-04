@@ -1,0 +1,7 @@
+.mw-ext-swiki-container
+{
+	background-color: var(--background-color-neutral-subtle, #f8f9fa);
+	margin: 2em 0;
+	border: 1px solid var(--border-color-muted, #dadde3);
+	color: var(--color-emphasized, #101418);
+}

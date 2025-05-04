@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"swiki-desc": "Swiki拡張機能は、指定されたOpenAPIまたはSwagger仕様のSwagger UIをレンダリングするタグを提供します",
+	"swiki-missing-spec": "OpenAPI/Swagger仕様が指定されていません",
+	"swiki-invalid-spec": "無効なJSONフォーマット",
+	"swiki-invalid-urls": "複数リンクのフォーマットが無効です"
+}

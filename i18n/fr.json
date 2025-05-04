@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"swiki-desc": "L'extension Swiki fournit une balise pour afficher Swagger UI pour une spécification OpenAPI ou Swagger donnée",
+	"swiki-missing-spec": "Aucune spécification OpenAPI/Swagger spécifiée",
+	"swiki-invalid-spec": "Format JSON invalide",
+	"swiki-invalid-urls": "Format invalide pour plusieurs liens"
+}

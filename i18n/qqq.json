@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"swiki-desc": "The description of Swiki used in Extension credits.",
+	"swiki-missing-spec": "Message shown when no OpenAPI/Swagger specification was specified.",
+	"swiki-invalid-spec": "Message shown when the input OpenAPI/Swagger specification has invalid JSON formatting",
+	"swiki-invalid-urls": "Message shown when the input string for multiple links is incorrectly formatted."
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"swiki-desc": "A extensão Swiki fornece uma tag para renderizar a Swagger UI para uma especificação OpenAPI ou Swagger fornecida",
+	"swiki-missing-spec": "Nenhuma especificação OpenAPI/Swagger especificada",
+	"swiki-invalid-spec": "Formatação JSON inválida",
+	"swiki-invalid-urls": "Formatação inválida para múltiplos links"
+}
