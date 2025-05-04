@@ -5,5 +5,10 @@
 	"swiki-desc": "The Swiki extension provides a tag to render Swagger UI for a given OpenAPI or Swagger specification",
 	"swiki-missing-spec": "No OpenAPI/Swagger specification specified",
 	"swiki-invalid-spec": "Invalid JSON formatting",
-	"swiki-invalid-urls": "Invalid formatting for multiple links"
+	"swiki-invalid-urls": "Invalid formatting for multiple links",
+	"swiki-ve-mwswikidialog-title": "Swagger UI",
+	"swiki-ve-mwswikidialog-spec": "OpenAPI/Swagger specification (JSON format)",
+	"swiki-ve-mwswikidialog-url": "Link",
+	"swiki-ve-mwswikidialog-urls": "Links",
+	"swiki-ve-mwswikidialog-standalone": "Render using standalone preset"
 }

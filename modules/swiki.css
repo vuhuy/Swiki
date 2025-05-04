@@ -5,3 +5,56 @@
 	border: 1px solid var(--border-color-muted, #dadde3);
 	color: var(--color-emphasized, #101418);
 }
+
+.mw-ext-swiki-placeholder {
+	background: #ffffff url('swagger-ui/swagger-ui-logo-day.svg') no-repeat 1em center;
+	background-size: auto 40px;
+	position: relative;
+	z-index: 1;
+	display: block;
+	overflow: hidden;
+	min-height: 40px;
+	padding: 1em 2em 1em 210px;
+	font-family: monospace;
+	color: #173647;
+	line-height: 40px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.mw-ext-swiki-placeholder::after {
+	content: "";
+	background: #f0f3f5;
+	position: absolute;
+	top: 1em;
+	left: 190px;
+	right: 1em;
+	bottom: 1em;
+	z-index: -1;
+	border-left: 2px solid #097eb2;
+	border-radius: 0 4px 4px 0;
+}
+
+.skin-theme-clientpref-night .mw-ext-swiki-placeholder {
+	background: #2b3239 url('swagger-ui/swagger-ui-logo-night.svg') no-repeat 1em center;
+	background-size: auto 40px;
+	color: #ffffff;
+}
+
+.skin-theme-clientpref-night .mw-ext-swiki-placeholder::after {
+	background: #1a1d20;
+	border-left: 2px solid #20b1fd;
+}
+
+@media (prefers-color-scheme: dark) {
+	.skin-theme-clientpref-os .mw-ext-swiki-placeholder {
+		background: #2b3239 url('swagger-ui/swagger-ui-logo-night.svg') no-repeat 1em center;
+		background-size: auto 40px;
+		color: #ffffff;
+	}
+
+	.skin-theme-clientpref-os .mw-ext-swiki-placeholder::after {
+		background: #1a1d20;
+		border-left: 2px solid #20b1fd;
+	}
+}

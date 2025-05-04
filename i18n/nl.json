@@ -5,5 +5,10 @@
 	"swiki-desc": "De Swiki-extensie biedt een tag om Swagger UI weer te geven voor een opgegeven OpenAPI- of Swagger-specificatie",
 	"swiki-missing-spec": "Geen OpenAPI/Swagger-specificatie opgegeven",
 	"swiki-invalid-spec": "Ongeldige JSON-opmaak",
-	"swiki-invalid-urls": "Ongeldige opmaak voor meerdere links"
+	"swiki-invalid-urls": "Ongeldige opmaak voor meerdere links",
+	"swiki-ve-mwswikidialog-title": "Swagger UI",
+	"swiki-ve-mwswikidialog-spec": "OpenAPI/Swagger-specificatie (JSON-indeling)",
+	"swiki-ve-mwswikidialog-url": "Link",
+	"swiki-ve-mwswikidialog-urls": "Links",
+	"swiki-ve-mwswikidialog-standalone": "Weergeven met zelfstandige voorinstelling"
 }
