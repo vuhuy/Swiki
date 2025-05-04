@@ -56,7 +56,7 @@ def test_visualeditor_edit(browser, base_url, name, click_selector, input_select
         element = WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".ve-ce-branchNode .mw-ext-swiki-container")))
         ActionChains(browser).move_to_element(element).click().perform()
         save_screenshot(browser, f'VisualEditor-Edit-{name}-Context')
-        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".oo-ui-widget:nth-child(1) > .oo-ui-buttonElement-button > .oo-ui-labelElement-label"))).click()
+        WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".ve-ui-context .oo-ui-widget:nth-child(1) > .oo-ui-buttonElement-button > .oo-ui-labelElement-label"))).click()
 
         # Edit Swiki tag with valid JSON and save.
         WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, click_selector))).click()
