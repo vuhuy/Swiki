@@ -10,6 +10,12 @@ php maintenance/run.php install.php \
     --lang=en \
     --pass=mediawiki1234 \
     'Swikipedia' 'Swiki' &&
+sed -i "1a\\
+error_reporting( -1 );\\
+ini_set( 'display_errors', 1 );\\
+\$wgShowExceptionDetails = true;\\
+\$wgShowDBErrorBacktrace = true;
+" LocalSettings.php &&
 echo "wfLoadExtension( 'WikiEditor' );" >> LocalSettings.php  &&
 echo "wfLoadExtension( 'CodeEditor' );" >> LocalSettings.php  &&
 echo "wfLoadExtension( 'VisualEditor' );" >> LocalSettings.php  &&
