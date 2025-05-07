@@ -5,7 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from tests.utils.helpers import assert_js_errors, save_screenshot, wait_for_visualeditor
+from tests.utils.helpers import assert_js_errors, assert_php_errors, save_screenshot, wait_for_visualeditor
 
 
 field_params = pytest.mark.parametrize(
@@ -37,8 +37,8 @@ def test_visualeditor_control(browser, base_url):
     """Javascript control test without using the extension."""
 
     browser.get(f"{base_url}/index.php?title=Control&veaction=edit")
+    assert_php_errors(browser)
     WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".oo-ui-toolbar")))
-
     assert_js_errors(browser)
 
 @field_params
@@ -50,6 +50,7 @@ def test_visualeditor_edit(browser, base_url, name, click_selector, input_select
     input_selector = click_selector if input_selector == "" else input_selector
 
     try:
+        assert_php_errors(browser)
         wait_for_visualeditor(browser)
 
         # Use node to open Swiki dialog.
@@ -81,6 +82,7 @@ def test_visualeditor_insert(browser, base_url, name, click_selector, input_sele
     input_selector = click_selector if input_selector == "" else input_selector
 
     try:
+        assert_php_errors(browser)
         wait_for_visualeditor(browser)
 
         # Use toolbar to open Swiki dialog.
