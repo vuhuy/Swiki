@@ -8,8 +8,8 @@ Swiki also includes [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark)
 
 > 🚀 **This repository follows the MediaWiki release branches compatibility policy.** You can find dedicated branches for supported versions here:
 >
-> - [Swiki for MediaWiki 1.43](https://github.com/vuhuy/Swiki/tree/REL1_43) (current LTS version)
-> - [Swiki for MediaWiki 1.42](https://github.com/vuhuy/Swiki/tree/REL1_42) (legacy stable version)
+> - [Swiki for MediaWiki 1.44](https://github.com/vuhuy/Swiki/tree/REL1_44) (current stable version)
+> - [Swiki for MediaWiki 1.43](https://github.com/vuhuy/Swiki/tree/REL1_43) (legacy stable and current LTS version)
 > - [Swiki for MediaWiki 1.39](https://github.com/vuhuy/Swiki/tree/REL1_39) (legacy LTS version)
 
 ## Screenshots
@@ -233,7 +233,7 @@ cd test/scripts
 Optionally, you can specify a supported MediaWiki version, e.g.:
 
 ```bash
-./run.sh 1.43
+./run.sh 1.44
 ```
 
 ## Credits
