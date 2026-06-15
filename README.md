@@ -207,6 +207,7 @@ Update `package.json` to include the new ES5 build target.
 Build the ES5 build target.
 
 ```bash
+npm install
 npm run build-stylesheets
 npm run build:es5:bundle
 ```
@@ -232,5 +233,5 @@ Optionally, you can specify a supported MediaWiki version, e.g.:
 
 ## Credits
 
-- [Swagger UI](https://github.com/swagger-api/swagger-ui) (v5.21.0)
+- [Swagger UI](https://github.com/swagger-api/swagger-ui) (v5.32.6)
 - [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark) (v1.0.4)
