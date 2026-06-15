@@ -60,7 +60,7 @@ mw.loader.using('mediawiki.util', () => {
 		// Set up shadow DOM.
 		const style = document.createElement('link');
 		style.setAttribute('rel', 'stylesheet');
-		style.setAttribute('href', '/load.php?modules=ext.swiki.swaggerui.styles&only=styles');
+		style.setAttribute('href', mw.util.wikiScript( 'load' ) + '?modules=ext.swiki.swaggerui.styles&only=styles');
 
 		const swagger = document.createElement('div');
 		swagger.className = 'swagger-container';
