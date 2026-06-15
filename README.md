@@ -8,9 +8,9 @@ Swiki also includes [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark)
 
 > 🚀 **This repository follows the MediaWiki release branches compatibility policy.** You can find dedicated branches for supported versions here:
 >
-> - [Swiki for MediaWiki 1.44](https://github.com/vuhuy/Swiki/tree/REL1_44) (current stable version)
+> - [Swiki for MediaWiki 1.45](https://github.com/5uhuy/Swiki/tree/REL1_45) (current stable version)
+> - [Swiki for MediaWiki 1.44](https://github.com/vuhuy/Swiki/tree/REL1_44) (legacy stable version )
 > - [Swiki for MediaWiki 1.43](https://github.com/vuhuy/Swiki/tree/REL1_43) (legacy stable and current LTS version)
-> - [Swiki for MediaWiki 1.39](https://github.com/vuhuy/Swiki/tree/REL1_39) (legacy LTS version)
 
 ## Screenshots
 
@@ -213,6 +213,7 @@ Update `package.json` to include the new ES5 build target.
 Build the ES5 build target.
 
 ```bash
+npm install
 npm run build-stylesheets
 npm run build:es5:bundle
 ```
@@ -233,10 +234,10 @@ cd test/scripts
 Optionally, you can specify a supported MediaWiki version, e.g.:
 
 ```bash
-./run.sh 1.44
+./run.sh 1.45
 ```
 
 ## Credits
 
-- [Swagger UI](https://github.com/swagger-api/swagger-ui) (v5.21.0)
+- [Swagger UI](https://github.com/swagger-api/swagger-ui) (v5.32.6)
 - [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark) (v1.0.4)
