@@ -10,3 +10,8 @@
 .swagger-ui .dialog-ux .backdrop-ux {
 	background: transparent;
 }
+
+/* Swagger UI v5.34.0: Schema model box not rendering correctly in dark mode. */
+html.dark-mode .swagger-ui .model-box {
+	background: none;
+}
