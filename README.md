@@ -4,7 +4,7 @@
 
 You can load OpenAPI or Swagger specifications in several ways: by embedding inline JSON, uploading a specification, referencing dedicated wiki pages that contain the specification, or linking to an external specification URL.
 
-Swiki also includes [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark), which is nicely integrated with MediaWiki skins that support dark mode, such as Vector-2022 and Minerva. Additionally, it can parse tags from third-party extensions like [SwaggerDoc](https://github.com/Griboedow/SwaggerDoc).
+Swagger UI's built-in dark mode is nicely integrated with MediaWiki skins that support dark mode, such as Vector-2022 and Minerva. Additionally, it can parse tags from third-party extensions like [SwaggerDoc](https://github.com/Griboedow/SwaggerDoc).
 
 ## Screenshots
 
@@ -233,5 +233,4 @@ Optionally, you can specify a supported MediaWiki version, e.g.:
 
 ## Credits
 
-- [Swagger UI](https://github.com/swagger-api/swagger-ui) (v5.32.6)
-- [Swagger Dark Theme](https://github.com/Amoenus/SwaggerDark) (v1.0.4)
+- [Swagger UI](https://github.com/swagger-api/swagger-ui) (v5.34.0)

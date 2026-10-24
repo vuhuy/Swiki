@@ -29,7 +29,6 @@
 		"ext.swiki.swaggerui.styles": {
 			"styles": [
 				"swagger-ui/swagger-ui.css",
-				"swagger-ui/swagger-ui-dark.css",
 				"swagger-ui/swagger-ui-custom.css"
 			]
 		},
