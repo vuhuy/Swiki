@@ -4,11 +4,11 @@
 # Requires docker, python 3.13, and python3-venv.
 #
 # Usage:
-#   ./run_test.sh [version]
+#   ./run.sh [version]
 #
 # Examples:
-#   ./run_test.sh
-#   ./run_test.sh 1.43
+#   ./run.sh
+#   ./run.sh 1.43
 
 # Set working directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

@@ -2,7 +2,7 @@ import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from tests.utils.helpers import assert_js_errors, save_screenshot
+from tests.utils.helpers import assert_js_errors, assert_php_errors, save_screenshot
 
 
 @pytest.mark.dependency(name="hook_control_test")
@@ -10,7 +10,14 @@ def test_hook_control(browser, base_url):
     """Javascript control test without using the extension."""
 
     browser.get(f"{base_url}/index.php/Control")
-    assert_js_errors(browser)
+
+    try:
+        assert_js_errors(browser)
+        assert_php_errors(browser)
+
+    except Exception as e:
+        save_screenshot(browser, f'Hook-Control-Fail')
+        raise
 
 @pytest.mark.parametrize("page,should_be_valid,should_be_standalone", [
     ("SwaggerDoc_Invalid_Urls", False, False),
@@ -28,8 +35,10 @@ def test_hook_page(browser, base_url, page, should_be_valid, should_be_standalon
     """Test Swiki hook and Swagger UI rendering result of the hook."""
 
     browser.get(f"{base_url}/index.php/{page}")
-
+    
     try:
+        assert_php_errors(browser)
+
         if should_be_valid:
             # Expect hook parser says Swagger UI should render this tag.
             browser.find_element(By.CSS_SELECTOR, ".mw-ext-swiki-render")
