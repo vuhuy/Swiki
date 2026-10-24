@@ -15,38 +15,33 @@ mw.loader.using('mediawiki.util', () => {
 		return 'skin-theme-clientpref-day';
 	};
 
+	const prefersDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
 	const applyColorScheme = (theme) => {
+		const dark = theme === 'skin-theme-clientpref-night' ||
+			(theme === 'skin-theme-clientpref-os' && prefersDark !== null && prefersDark.matches);
+
 		document.querySelectorAll('.mw-ext-swiki-container').forEach((container, _) => {
 			if (container.classList.contains('mw-ext-swiki-manual-color-scheme')) return;
 
-			const swagger = container.shadowRoot?.querySelector('.swagger-container');
-			if (!swagger) return;
+			const root = container.shadowRoot?.querySelector('.swagger-root');
+			if (!root) return;
 
-			if (theme === 'skin-theme-clientpref-night')
-				swagger.classList.add('swagger-ui-dark');
-			else if (theme === 'skin-theme-clientpref-day')
-				swagger.classList.remove('swagger-ui-dark');
-			else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-				swagger.classList.add('swagger-ui-dark');
-			else
-				swagger.classList.remove('swagger-ui-dark');
+			root.classList.toggle('dark-mode', dark);
 		});
 	};
-	  
+
 	const observer = new MutationObserver((mutationsList) => {
 		for (const mutation of mutationsList) {
 			if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
 				const activeTheme = getActiveTheme();
 				if (activeTheme !== currentTheme) {
 					currentTheme = activeTheme;
-					applyColorScheme(currentTheme, false);
+					applyColorScheme(currentTheme);
 				}
 			}
 		}
 	});
-
-	applyColorScheme(getActiveTheme());
-	observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
 	// Render Swagger UI using shadow DOM in all Swiki containers.
 	document.querySelectorAll('.mw-ext-swiki-render').forEach((container, _) => {
@@ -62,18 +57,22 @@ mw.loader.using('mediawiki.util', () => {
 		style.setAttribute('rel', 'stylesheet');
 		style.setAttribute('href', mw.util.wikiScript( 'load' ) + '?modules=ext.swiki.swaggerui.styles&only=styles');
 
-		const swagger = document.createElement('div');
-		swagger.className = 'swagger-container';
+		const root = document.createElement('html');
+		root.className = 'swagger-root';
 		if (scheme === 'light' || scheme === 'dark') {
 			container.classList.add('mw-ext-swiki-manual-color-scheme');
 
 			if (scheme === 'dark')
-				swagger.classList.add('swagger-ui-dark');
+				root.classList.add('dark-mode');
 		}
+
+		const swagger = document.createElement('div');
+		swagger.className = 'swagger-container';
+		root.appendChild(swagger);
 
 		const shadow = container.attachShadow({ mode: 'open' });
 		shadow.appendChild(style);
-		shadow.appendChild(swagger);
+		shadow.appendChild(root);
 
 		// Build Swagger UI config.
 		let cfg = {
@@ -116,9 +115,16 @@ mw.loader.using('mediawiki.util', () => {
 		if (standalone === '1' || cfg['urls']) {
 			cfg['presets'].push(window.SwaggerUIStandalonePreset);
 			cfg['layout'] = 'StandaloneLayout';
+			cfg['plugins'].push(() => ({ components: { DarkModeToggle: () => null } }));
 		}
 
 		SwaggerUIBundle(cfg);
 		container.classList.add('mw-ext-swiki-rendered');
 	});
+
+	applyColorScheme(getActiveTheme());
+	observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+	if (prefersDark !== null)
+		prefersDark.addEventListener('change', () => applyColorScheme(getActiveTheme()));
 });
