@@ -1,5 +1,6 @@
 import os
 import pytest
+from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
@@ -18,6 +19,13 @@ def browser(request):
         driver = webdriver.Chrome(options=options)
     elif request.param == "firefox":
         options = FirefoxOptions()
+
+        # Workaround for Firefox snap on Ubuntu systems. 
+        # The test will run, but you will get errors when it tries to terminate Firefox.
+        snap_firefox_path = Path("/snap/firefox/current/usr/lib/firefox/firefox")
+        if snap_firefox_path.exists():
+            options.binary_location = str(snap_firefox_path)
+
         options.add_argument("--headless")
         driver = webdriver.Firefox(options=options)
     else:

@@ -1,6 +1,6 @@
 {
 	"name": "Swiki",
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"author": "Vuhuy Luu",
 	"url": "https://github.com/vuhuy/Swiki",
 	"descriptionmsg": "swiki-desc",
@@ -29,7 +29,6 @@
 		"ext.swiki.swaggerui.styles": {
 			"styles": [
 				"swagger-ui/swagger-ui.css",
-				"swagger-ui/swagger-ui-dark.css",
 				"swagger-ui/swagger-ui-custom.css"
 			]
 		},

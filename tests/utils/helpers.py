@@ -16,6 +16,17 @@ def assert_js_errors(browser):
         errors = [log for log in logs if log["level"] == "SEVERE"]
         assert len(errors) == 0, f"Javascript errors detected: {errors}."
 
+def assert_php_errors(browser):
+    """Assert that there are no php errors on the current page."""
+
+    # Not ideal, but does the job.
+    src = browser.page_source.strip().lower()
+    assert "parse error: " not in src and "<b>parse error</b>: " not in src, f"PHP parse error detected."
+    assert "warning: " not in src and "<b>warning</b>: " not in src, f"PHP warning detected."
+    assert "fatal error: " not in src and "<b>fatal error</b>: " not in src, f"PHP fatal error detected."
+    assert "error: " not in src and "<b>error</b>: " not in src, f"PHP error detected."
+    assert "deprecated: " not in src and "<b>deprecated</b>: " not in src, f"PHP deprectation warning detected."
+
 def save_screenshot(browser, name):
     """Save a screenshot of the current page."""
 
@@ -40,3 +51,4 @@ def wait_for_visualeditor(browser):
         WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".oo-ui-iconElement-icon.oo-ui-icon-close"))).click()
     except TimeoutException:
         pass
+
